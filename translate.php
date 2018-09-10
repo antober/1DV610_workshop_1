@@ -1,17 +1,28 @@
 <?php
 
+/*
+    Checks users input if empty
+    @throws exception if empty
+    NOT HANDLING ECXEPTION YET!!
+
+*/
 function checkUserInput() {
     $input = $_POST['input'];
 
 if ($input === '') {
-    echo "cannot be empty";
+    throw new Exception("Empty user input");
+
 } else {
     checkLanguage($input);    
+    }
 }
-}
+
 
 checkUserInput();
 
+/*
+    Selects language depenting on users choice in dropdown
+*/
 function checkLanguage($input){
     $language = $_POST['languageChoice'];
 
@@ -24,23 +35,29 @@ function checkLanguage($input){
     }
 }
 
+/*
+    Presents result and adds href to startpage
+*/
 function echoOutput ($output) {
     echo $output;
 
-    echo '<p><a href="/workshop1">Översätt en ny grej</a></p>';
+    echo '<p><a href="/workshop1-ahel">Översätt en ny grej</a></p>';
 }
 
-function translateToRobberLanguage ($input) {
-    $text = strtolower($input);
+/*
+    Translates userinput to robberlanguage
+*/
+function translateToRobberLanguage ($wordsToBeTranslated) {
+    $text = strtolower($wordsToBeTranslated);
 
-    $consonantsArray = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v","w", "x", "z"];
+    $consonants = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v","w", "x", "z"];
 
-    $characterArray = str_split($text);
+    $character = str_split($text);
 
     $output = "";
 
-    foreach ($characterArray as $character) {
-        foreach ($consonantsArray as $consonant) {
+    foreach ($character as $character) {
+        foreach ($consonants as $consonant) {
             if ($character === $consonant) {
                 $character .= "o";
             }
@@ -51,9 +68,19 @@ function translateToRobberLanguage ($input) {
     echoOutput($output);
 }
 
-// TODO: implement this function
-function translateToEnglish ($input) {
-    $output = "Error: English translation is not yet implemented";
-
+/*
+    Translates user input to english
+    Case sensitive still!
+*/
+function translateToEnglish ($wordsToBeTranslated) {
+    include("dictionary.php");
+    
+    foreach ($sweToEngDictionary as $swe => $eng) {
+        if($wordsToBeTranslated == $swe)
+        {
+            echo $eng;
+        }
+        
+    }
     echoOutput($output);
 }

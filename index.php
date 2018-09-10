@@ -1,13 +1,5 @@
 <?php
 
-//översättningswebapp
-/*
-function translate() {
-    $input = $_POST['input'];
-
-echo "$input";
-}*/
-
 echo '<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +10,7 @@ echo '<!DOCTYPE html>
 </head>
 <body>
 <p>Skriv något på rövarspråket och få det översatt</p>
-    <form action="/workshop1/translate.php" method="POST">
+    <form action="/workshop1-ahel/translate.php" method="POST">
             <input type="text" name="input">
 
             <select name="languageChoice">
