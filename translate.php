@@ -6,13 +6,29 @@ function checkUserInput() {
 if ($input === '') {
     echo "cannot be empty";
 } else {
-    translateToRobberLanguage($input);
+    checkLanguage($input);    
 }
 }
 
 checkUserInput();
 
+function checkLanguage($input){
+    $language = $_POST['languageChoice'];
 
+    if ($language === "Rövarspråket") {
+        translateToRobberLanguage($input);
+    }
+
+    if ($language === "Engelska") {
+        translateToEnglish($input);
+    }
+}
+
+function echoOutput ($output) {
+    echo $output;
+
+    echo '<p><a href="/workshop1">Översätt en ny grej</a></p>';
+}
 
 function translateToRobberLanguage ($input) {
     $text = strtolower($input);
@@ -31,9 +47,12 @@ function translateToRobberLanguage ($input) {
         }
         $output .= "$character";
     }
+    
+    echoOutput($output);
+}
 
-    echo $output;
+function translateToEnglish ($input) {
+    $output = "Error: English translation is not yet implemented";
 
-    echo '<p><a href="/workshop1">Översätt en ny grej</a></p>';
-
+    echoOutput($output);
 }

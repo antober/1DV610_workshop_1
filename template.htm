@@ -7,12 +7,19 @@
     <title>Translator web app</title>
 </head>
 <body>
+
     <p>Skriv något på rövarspråket och få det översatt</p>
     <form action="/index.php" method="POST">
             <input type="submit" name="input">
-            <button>translate</button>
-        </form>
 
+            <select name="languageChoice">
+                <option value="Rövarspråket">Rövarspråket</option>
+                <option value="Engelska">Engelska</option>
+            </select>
+
+            <button>translate</button>
+       
+        </form>
         <br>
         <a href="/workshop1">Översätt en ny grej</a>
 </body>

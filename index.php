@@ -20,7 +20,14 @@ echo '<!DOCTYPE html>
 <p>Skriv något på rövarspråket och få det översatt</p>
     <form action="/workshop1/translate.php" method="POST">
             <input type="text" name="input">
+
+            <select name="languageChoice">
+                <option value="Rövarspråket">Rövarspråket</option>
+                <option value="Engelska">Engelska</option>
+            </select>
+            <p>
             <button>translate</button>
+            </p>
         </form>
 </body>
 </html>';
