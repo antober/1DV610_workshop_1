@@ -51,6 +51,7 @@ function translateToRobberLanguage ($input) {
     echoOutput($output);
 }
 
+// TODO: implement this function
 function translateToEnglish ($input) {
     $output = "Error: English translation is not yet implemented";
 
